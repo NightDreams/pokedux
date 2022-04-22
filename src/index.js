@@ -4,14 +4,14 @@ import App from "./containers/App";
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
+import { logActions } from "./middlewares/index";
 import { pokemonReducer } from "./reducers/pokemon";
 
 import "./index.css";
 
 const store = configureStore({
   reducer: pokemonReducer,
-  // devTools: true,
+  middleware: [logActions],
 });
 
 ReactDOM.render(
