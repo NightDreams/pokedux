@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Icon, Image, Label } from "semantic-ui-react";
 import { MAIN_COLOR, FAV_COLOR, API_URL } from "../../utils/constants";
 import "./styles.css";
-function PokemonCard() {
+const PokemonCard = () => {
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <Icon name="favorite" color={FAV_COLOR}></Icon>
@@ -13,6 +13,6 @@ function PokemonCard() {
       </div>
     </Grid.Column>
   );
-}
+};
 
 export default PokemonCard;
