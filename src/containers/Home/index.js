@@ -1,30 +1,22 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 //comp
 import Searcher from "../../components/Searcher";
 import PokemonList from "../../components/PokemonList";
 
-//reducers and api
+// Action
+import { setPokemonsWithDetails, setError } from "../../actions";
 import { getPokemons } from "../../api/getPokemons";
-import { setPokemons, setError } from "../../actions";
 import "./styles.css";
 
 function Home() {
+  const pokemons = useSelector((state) => state.list);
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.list);
 
   useEffect(() => {
     getPokemons()
       .then((res) => {
-        const pokemonList = res.results;
-        return Promise.all(
-          pokemonList.map((pokemon) => axios.get(pokemon.url))
-        );
-      })
-      .then((pokemonsResponse) => {
-        const pokemonsData = pokemonsResponse.map((res) => res.data);
-        dispatch(setPokemons(pokemonsData));
+        dispatch(setPokemonsWithDetails(res.results));
       })
       .catch((error) => {
         dispatch(setError({ message: "Ocurrió un error", error }));
@@ -34,13 +26,8 @@ function Home() {
   return (
     <div className="Home">
       <Searcher />
-      <PokemonList pokemons={list} />
+      <PokemonList pokemons={pokemons} />
     </div>
   );
 }
-
-Home.defaultProps = {
-  pokemons: [],
-};
-
 export default Home;

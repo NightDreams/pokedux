@@ -4,6 +4,8 @@ import PokemonCard from "./PokemonCard";
 import "./styles.css";
 
 const PokemonList = ({ pokemons }) => {
+  if (!pokemons) return null;
+
   return (
     <div className="wrapper">
       <Grid>
