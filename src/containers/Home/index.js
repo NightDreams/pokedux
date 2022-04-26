@@ -5,7 +5,7 @@ import Searcher from "../../components/Searcher";
 import PokemonList from "../../components/PokemonList";
 
 // Action
-import { setPokemonsWithDetails } from "../../actions";
+import { fetchPokemons } from "../../actions";
 import "./styles.css";
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPokemonsWithDetails());
+    dispatch(fetchPokemons());
   }, []);
 
   return (
