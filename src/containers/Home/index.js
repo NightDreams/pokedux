@@ -10,13 +10,13 @@ import { fetchPokemonsWithDetails } from "../../actions";
 import "./styles.css";
 
 function Home() {
-  const pokemons = useSelector((state) => state.list);
-  const loading = useSelector((state) => state.loading);
+  const pokemons = useSelector((state) => state.get("list").toJS());
+  const loading = useSelector((state) => state.get("loading"));
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPokemonsWithDetails());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="Home">
