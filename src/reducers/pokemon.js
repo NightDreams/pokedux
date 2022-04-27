@@ -1,15 +1,7 @@
-import {
-  SET_POKEMONS,
-  SET_ERROR,
-  CLEAR_ERROR,
-  TOGGLE_LOADER,
-  SET_FAVORITE,
-} from "../actions/types";
+import { SET_POKEMONS, SET_FAVORITE } from "../actions/types";
 
 const initialState = {
   list: [],
-  error: "",
-  loading: false,
 };
 
 export const pokemonReducer = (state = initialState, action) => {
@@ -26,12 +18,6 @@ export const pokemonReducer = (state = initialState, action) => {
           !newPokemonList[currentPokemonIndex].favorite;
       }
       return { ...state, list: newPokemonList };
-    case SET_ERROR:
-      return { ...state, error: action.payload.message };
-    case CLEAR_ERROR:
-      return { ...state, error: "" };
-    case TOGGLE_LOADER:
-      return { ...state, loading: !state.loading };
     default:
       return state;
   }
