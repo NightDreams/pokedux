@@ -6,8 +6,8 @@ import PokemonList from "../../components/PokemonList";
 import Loader from "../../components/Loader";
 
 // Action
-import { fetchPokemonsWithDetails } from "../../actions";
 import "./styles.css";
+import { fetchPokemons } from "../../slices/pokemon";
 
 function Home() {
   const pokemons = useSelector((state) => state.pokemon.list);
@@ -15,7 +15,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPokemonsWithDetails());
+    dispatch(fetchPokemons());
   }, []);
 
   return (

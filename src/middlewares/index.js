@@ -1,4 +1,4 @@
-import { SET_ERROR } from "../actions/types";
+// import { SET_ERROR } from "../actions/types";
 
 export const logActions = (store) => (next) => (actionInfo) => {
   console.log(
@@ -10,7 +10,7 @@ export const logActions = (store) => (next) => (actionInfo) => {
 export const reportError = (store) => (next) => (actionInfo) => {
   const { action } = actionInfo;
 
-  if (action?.type === SET_ERROR) {
+  if (action?.type === "SET_ERROR") {
     console.error(action.payload);
   }
 
